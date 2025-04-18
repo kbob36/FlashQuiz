@@ -17,8 +17,9 @@ Class used for all flash card objects
 The idea here is to create an object for each flashcard that the student
 can add information too
 """
-class Flash_Card:
-    def __init__(self):
+class Flashcard:
+    def __init__(self, number):
+        self.number = number
         self.input = None
         self.output = None
 
@@ -29,13 +30,25 @@ class Flash_Card:
         self.output = output
 
 def main():
-    #Create an object
-    Set_1 = Flash_Card()
-    Set_1.set_input("2+2") #Modify its attributes with personal functions
-    Set_1.set_output("4")
+    #To create number of flash cards
+    Num_Cards = 0
+
+    #Prompt the user for the number of flashcards they wish to make
+    Num_Cards = input("How many flash cards will you create?")
+    Num_Cards = int(Num_Cards)
+
+    #Create a list containing all flash cards
+    Flashcards = [Flashcard(i) for i in range(Num_Cards)]
+
+    print(f"You have {Num_Cards} flash cards")
+    print("Please fill a flash card")
+
+    #Receive input for the first flash card
+    Flashcards[0].input = input("What would you like the fact to be?")
+    Flashcards[0].output = input("What is the solution to this card")
 
     #print attributes to console
-    print(f"The input is {Set_1.input} and output is {Set_1.output}")
+    print(f"The question is: {Flashcards[0].input} and the answer is: {Flashcards[0].output}")
 
 if __name__ == "__main__":
     main()
